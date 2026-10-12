@@ -12,7 +12,7 @@ class Quiz {
   }
 
   moveToNextQuestion() {
-    return this.currentQuestionIndex++;
+    this.currentQuestionIndex++;
   }
 
   shuffleQuestions() {

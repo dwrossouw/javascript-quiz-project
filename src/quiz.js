@@ -26,10 +26,32 @@ class Quiz {
   }
 
   hasEnded() {
-    if(this.currentQuestionIndex < this.questions.length){
-        return false;
-    } else if (this.currentQuestionIndex === this.questions.length){
-        return true;
+    if (this.currentQuestionIndex < this.questions.length) {
+      return false;
+    } else if (this.currentQuestionIndex === this.questions.length) {
+      return true;
     }
+  }
+
+  filterQuestionsByDifficulty(difficultyLevel) {
+
+    if (difficultyLevel >= 1 && difficultyLevel <= 3) {
+      this.questions = this.questions.filter((element) => {
+        return element.difficulty === difficultyLevel;
+      });
+    } 
+  }
+
+  averageDifficulty() {
+    const arrLength = this.questions.length;
+    if (arrLength === 0) {
+      return 0;
+    }
+    const total = this.questions.reduce((acc, element) => {
+      return acc + element.difficulty;
+    }, 0);
+
+    const avg = total / arrLength;
+    return avg;
   }
 }
